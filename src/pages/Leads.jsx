@@ -18,7 +18,7 @@ export default function Leads() {
           <h2 className="text-2xl font-bold text-slate-900">Leads</h2>
           <p className="text-slate-500 mt-1 text-sm">Track and convert incoming leads.</p>
         </div>
-        <button className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+        <button onClick={() => console.log('Add Lead button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
           <FiPlus size={18} /> Add Lead
         </button>
       </div>
@@ -78,7 +78,7 @@ export default function Leads() {
                 <td className="px-6 py-4 text-right">
                   <button className="text-slate-400 hover:text-slate-700"><FiMoreVertical /></button>
                 </td>
-              </tr>
+              </tr> 
             ))}
           </tbody>
         </table>

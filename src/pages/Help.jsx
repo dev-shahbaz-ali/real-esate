@@ -129,7 +129,7 @@ export default function Help() {
           </div>
 
           <div className="mt-6 pt-4 border-t border-slate-100 text-center">
-            <button className="text-sm text-blue-600 font-medium hover:underline">View Full Knowledge Base →</button>
+            <button onClick={() => console.log('View Full Knowledge Base button clicked')} className="text-sm text-blue-600 font-medium hover:underline">View Full Knowledge Base →</button>
           </div>
         </div>
 
@@ -139,7 +139,7 @@ export default function Help() {
           {/* Recent Support Tickets */}
           <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
             <div className="flex justify-between items-center mb-4">
-              <h4 className="text-sm font-bold text-slate-800">Recent Tickets</h4>
+              <h4 onClick={() => console.log('Recent Tickets header clicked')} className="text-sm font-bold text-slate-800 cursor-pointer">Recent Tickets</h4>
               <button className="text-blue-600 text-xs font-medium hover:underline">View All</button>
             </div>
             <div className="space-y-3">
@@ -161,7 +161,7 @@ export default function Help() {
                       <span className="flex items-center gap-1"><FiAlertCircle size={10} /> {ticket.priority}</span>
                     </div>
                   </div>
-                  <FiArrowRight className="text-slate-400" size={16} />
+                  <FiArrowRight onClick={() => console.log(`Ticket ${ticket.id} details clicked`)} className="text-slate-400 cursor-pointer" size={16} />
                 </div>
               ))}
             </div>
@@ -173,7 +173,7 @@ export default function Help() {
           {/* Contact Support Form */}
           <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
             <div className="flex justify-between items-center mb-4">
-              <h4 className="text-sm font-bold text-slate-800">Contact Support</h4>
+              <h4 onClick={() => console.log('Contact Support header clicked')} className="text-sm font-bold text-slate-800 cursor-pointer">Contact Support</h4>
             </div>
             
             <div className="space-y-4">
@@ -217,7 +217,7 @@ export default function Help() {
                   placeholder="Type your question..." 
                   className="flex-1 px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs outline-none focus:ring-1 focus:ring-blue-500"
                 />
-                <button className="bg-[#0f3b9e] text-white p-2 rounded-lg hover:bg-blue-800 transition">
+                <button onClick={() => console.log('Send Quick Message button clicked')} className="bg-[#0f3b9e] text-white p-2 rounded-lg hover:bg-blue-800 transition">
                   <FiSend size={16} />
                 </button>
               </div>

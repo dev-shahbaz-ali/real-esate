@@ -19,7 +19,7 @@ export default function Clients() {
           <h2 className="text-2xl font-bold text-slate-900">Clients</h2>
           <p className="text-slate-500 mt-1 text-sm">Manage your client relationships and history.</p>
         </div>
-        <button className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+        <button onClick={() => console.log('Add Client button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
           <FiPlus size={18} /> Add Client
         </button>
       </div>
@@ -90,7 +90,7 @@ export default function Clients() {
                 <td className="px-6 py-4 font-semibold text-slate-900">{client.deals}</td>
                 <td className="px-6 py-4 text-right">
                   <button className="text-slate-400 hover:text-slate-700"><FiMoreVertical /></button>
-                </td>
+                </td> {/* This button needs an onClick */}
               </tr>
             ))}
           </tbody>

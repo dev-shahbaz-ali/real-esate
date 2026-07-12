@@ -85,10 +85,10 @@ export default function Documents() {
           <p className="text-slate-500 mt-1 text-sm">Manage contracts, disclosures, and property files.</p>
         </div>
         <div className="flex gap-3">
-          <button className="border border-slate-200 text-slate-700 px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm hover:bg-slate-50 transition">
+          <button onClick={() => console.log('New Folder button clicked')} className="border border-slate-200 text-slate-700 px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm hover:bg-slate-50 transition">
             <FiPlus size={18} /> New Folder
           </button>
-          <button className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+          <button onClick={() => console.log('Upload File button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
             <FiPlus size={18} /> Upload File
           </button>
         </div>
@@ -126,7 +126,7 @@ export default function Documents() {
             <option>File Size</option>
             <option>Name (A-Z)</option>
           </select>
-          <button className="flex items-center gap-2 border border-slate-200 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 bg-white">
+          <button onClick={() => console.log('Filter documents button clicked')} className="flex items-center gap-2 border border-slate-200 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 bg-white">
             <FiFilter size={16} /> Filter
           </button>
         </div>
@@ -137,7 +137,7 @@ export default function Documents() {
         <h4 className="text-sm font-bold text-slate-700">Folders</h4>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
           {foldersData.map((folder) => (
-            <div key={folder.id} className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-200 transition group cursor-pointer">
+            <div key={folder.id} onClick={() => console.log(`Folder ${folder.name} clicked`)} className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-200 transition group cursor-pointer">
               <div className="flex justify-between items-start">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center text-yellow-600 text-2xl">
@@ -148,7 +148,7 @@ export default function Documents() {
                     <p className="text-xs text-slate-500">{folder.files} files</p>
                   </div>
                 </div>
-                <button className="text-slate-400 hover:text-slate-700 p-1 rounded hover:bg-slate-100 transition">
+                <button onClick={(e) => { e.stopPropagation(); console.log(`More options for folder ${folder.name} clicked`); }} className="text-slate-400 hover:text-slate-700 p-1 rounded hover:bg-slate-100 transition">
                   <FiMoreVertical size={16} />
                 </button>
               </div>
@@ -188,7 +188,7 @@ export default function Documents() {
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       <span className="text-xl">{file.icon}</span>
-                      <span className="font-medium text-slate-900 hover:text-blue-600 hover:underline cursor-pointer">{file.name}</span>
+                    <span onClick={() => console.log(`File ${file.name} clicked`)} className="font-medium text-slate-900 hover:text-blue-600 hover:underline cursor-pointer">{file.name}</span>
                     </div>
                   </td>
                   <td className="px-6 py-4 text-xs font-medium text-slate-600">{file.property}</td>
@@ -201,9 +201,9 @@ export default function Documents() {
                   <td className="px-6 py-4 text-xs">{file.modified}</td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition">
-                      <button className="p-1 text-slate-400 hover:text-blue-600 hover:bg-slate-100 rounded transition"><FiDownload size={16} /></button>
-                      <button className="p-1 text-slate-400 hover:text-green-600 hover:bg-slate-100 rounded transition"><FiShare2 size={16} /></button>
-                      <button className="p-1 text-slate-400 hover:text-red-600 hover:bg-slate-100 rounded transition"><FiTrash2 size={16} /></button>
+                      <button onClick={() => console.log(`Download file ${file.name} clicked`)} className="p-1 text-slate-400 hover:text-blue-600 hover:bg-slate-100 rounded transition"><FiDownload size={16} /></button>
+                      <button onClick={() => console.log(`Share file ${file.name} clicked`)} className="p-1 text-slate-400 hover:text-green-600 hover:bg-slate-100 rounded transition"><FiShare2 size={16} /></button>
+                      <button onClick={() => console.log(`Delete file ${file.name} clicked`)} className="p-1 text-slate-400 hover:text-red-600 hover:bg-slate-100 rounded transition"><FiTrash2 size={16} /></button>
                     </div>
                   </td>
                 </tr>
@@ -214,9 +214,9 @@ export default function Documents() {
           {/* --- TABLE FOOTER --- */}
           <div className="px-6 py-4 border-t border-slate-200 flex justify-between items-center text-xs text-slate-500 bg-slate-50/50">
             <span>Showing 5 of 156 files</span>
-            <div className="flex gap-2">
-              <button className="px-3 py-1 border border-slate-200 rounded bg-white hover:bg-slate-50 disabled:opacity-50" disabled>Previous</button>
-              <button className="px-3 py-1 border border-slate-200 rounded bg-white hover:bg-slate-50">Next</button>
+            <div className="flex gap-2" role="group"> {/* Added role for accessibility */}
+              <button onClick={() => console.log('Previous files page clicked')} className="px-3 py-1 border border-slate-200 rounded bg-white hover:bg-slate-50 disabled:opacity-50" disabled>Previous</button>
+              <button onClick={() => console.log('Next files page clicked')} className="px-3 py-1 border border-slate-200 rounded bg-white hover:bg-slate-50">Next</button>
             </div>
           </div>
         </div>

@@ -33,7 +33,6 @@ export default function Settings() {
     { id: 'profile', label: 'My Profile', icon: <FiUser size={18} /> },
     { id: 'notifications', label: 'Notifications', icon: <FiBell size={18} /> },
     { id: 'security', label: 'Security', icon: <FiLock size={18} /> },
-    { id: 'billing', label: 'Billing & Plans', icon: <FiCreditCard size={18} /> },
     { id: 'preferences', label: 'Preferences', icon: <FiGlobe size={18} /> },
   ];
 
@@ -98,7 +97,7 @@ export default function Settings() {
                     className="w-24 h-24 rounded-full border-4 border-white shadow-md object-cover" 
                   />
                   <button className="absolute bottom-0 right-0 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 shadow-lg transition">
-                    <FiUpload size={16} />
+                    <FiUpload onClick={() => console.log('Upload profile photo button clicked')} size={16} />
                   </button>
                 </div>
                 <div>
@@ -106,7 +105,7 @@ export default function Settings() {
                   <p className="text-sm text-slate-500">Senior Agent</p>
                   <button className="mt-2 text-xs text-blue-600 font-medium hover:underline">Change Photo</button>
                 </div>
-              </div>
+              </div> {/* This button needs an onClick */}
 
               {/* Form Fields */}
               <div className="grid grid-cols-2 gap-6">
@@ -143,7 +142,7 @@ export default function Settings() {
 
               {/* Save Button */}
               <div className="pt-6 border-t border-slate-100 flex justify-end">
-                <button className="bg-[#0f3b9e] text-white px-6 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+                <button onClick={() => console.log('Save Changes button clicked')} className="bg-[#0f3b9e] text-white px-6 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
                   <FiSave size={18} /> Save Changes
                 </button>
               </div>
@@ -202,7 +201,7 @@ export default function Settings() {
               </div>
 
               <div className="pt-6 border-t border-slate-100 flex justify-end">
-                <button className="bg-[#0f3b9e] text-white px-6 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+                <button onClick={() => console.log('Save Notifications Preferences button clicked')} className="bg-[#0f3b9e] text-white px-6 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
                   <FiSave size={18} /> Save Preferences
                 </button>
               </div>
@@ -253,7 +252,7 @@ export default function Settings() {
               </div>
 
               <div className="pt-6 border-t border-slate-100 flex justify-end">
-                <button className="bg-[#0f3b9e] text-white px-6 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+                <button onClick={() => console.log('Update Security button clicked')} className="bg-[#0f3b9e] text-white px-6 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
                   <FiSave size={18} /> Update Security
                 </button>
               </div>
@@ -264,10 +263,7 @@ export default function Settings() {
           {activeTab === 'billing' && (
             <div className="space-y-8 animate-fade-in">
               <div className="flex justify-between items-center pb-4 border-b border-slate-100">
-                <div>
-                  <h4 className="text-lg font-bold text-slate-800">Billing & Plans</h4>
-                  <p className="text-sm text-slate-500">Manage your subscription, plans, and payment methods.</p>
-                </div>
+                
               </div>
 
               {/* Current Plan */}
@@ -280,7 +276,7 @@ export default function Settings() {
                   <p className="text-sm text-blue-700 mt-1">Next billing date: June 15, 2026</p>
                   <p className="text-xs text-blue-600 mt-0.5">$49.99 / month · 5 team members included</p>
                 </div>
-                <button className="bg-white border border-blue-300 text-blue-700 px-4 py-2 rounded-lg text-xs font-semibold hover:bg-blue-50 transition">
+                <button onClick={() => console.log('Upgrade Plan button clicked')} className="bg-white border border-blue-300 text-blue-700 px-4 py-2 rounded-lg text-xs font-semibold hover:bg-blue-50 transition">
                   Upgrade Plan
                 </button>
               </div>
@@ -296,7 +292,7 @@ export default function Settings() {
                       <p className="text-xs text-slate-500">Expires 12/2028</p>
                     </div>
                   </div>
-                  <button className="text-xs text-blue-600 font-medium hover:underline">Edit</button>
+                  <button onClick={() => console.log('Edit Payment Method button clicked')} className="text-xs text-blue-600 font-medium hover:underline">Edit</button>
                 </div>
                 <button className="text-sm text-blue-600 font-medium hover:underline flex items-center gap-1 mt-1">
                   <FiPlus size={14} /> Add Payment Method
@@ -375,7 +371,7 @@ export default function Settings() {
               </div>
 
               <div className="pt-6 border-t border-slate-100 flex justify-end">
-                <button className="bg-[#0f3b9e] text-white px-6 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+                <button onClick={() => console.log('Save Preferences button clicked')} className="bg-[#0f3b9e] text-white px-6 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
                   <FiSave size={18} /> Save Preferences
                 </button>
               </div>

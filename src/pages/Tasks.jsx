@@ -96,7 +96,7 @@ export default function Tasks() {
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Tasks</h2>
           <p className="text-slate-500 mt-1 text-sm">View and manage all team tasks and to-dos.</p>
         </div>
-        <button className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+        <button onClick={() => console.log('Add New Task button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
           <FiPlus size={18} /> Add New Task
         </button>
       </div>
@@ -132,7 +132,7 @@ export default function Tasks() {
             <option>Medium</option>
             <option>Low</option>
           </select>
-          <button className="flex items-center gap-2 border border-slate-200 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 bg-white">
+          <button onClick={() => console.log('Filter tasks button clicked')} className="flex items-center gap-2 border border-slate-200 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 bg-white">
             <FiFilter size={16} /> Filter
           </button>
         </div>
@@ -190,7 +190,7 @@ export default function Tasks() {
                     </span>
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <button className="text-slate-400 hover:text-slate-700 p-1 rounded hover:bg-slate-100 transition">
+                    <button onClick={() => console.log(`More options for task ${task.id} clicked`)} className="text-slate-400 hover:text-slate-700 p-1 rounded hover:bg-slate-100 transition">
                       <FiMoreVertical size={18} />
                     </button>
                   </td>
@@ -203,9 +203,9 @@ export default function Tasks() {
         {/* --- TABLE FOOTER --- */}
         <div className="px-6 py-4 border-t border-slate-200 flex justify-between items-center text-xs text-slate-500 bg-slate-50/50">
           <span>Showing 1 to 6 of 24 tasks</span>
-          <div className="flex gap-2">
-            <button className="px-3 py-1 border border-slate-200 rounded bg-white hover:bg-slate-50 disabled:opacity-50" disabled>Previous</button>
-            <button className="px-3 py-1 border border-slate-200 rounded bg-white hover:bg-slate-50">Next</button>
+          <div className="flex gap-2" role="group"> {/* Added role for accessibility */}
+            <button onClick={() => console.log('Previous tasks page clicked')} className="px-3 py-1 border border-slate-200 rounded bg-white hover:bg-slate-50 disabled:opacity-50" disabled>Previous</button>
+            <button onClick={() => console.log('Next tasks page clicked')} className="px-3 py-1 border border-slate-200 rounded bg-white hover:bg-slate-50">Next</button>
           </div>
         </div>
       </div>

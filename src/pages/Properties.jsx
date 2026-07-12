@@ -3,7 +3,8 @@ import {
   FiPlus,
   FiSearch,
   FiFilter,
-  FiMoreVertical,
+  FiMoreVertical, // This is an icon, but often used as a clickable menu trigger
+  // FiMoreVertical, // This is an icon, but often used as a clickable menu trigger
   FiHome,
   FiDollarSign,
   FiCalendar,
@@ -97,7 +98,7 @@ export default function Properties() {
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Properties</h2>
           <p className="text-slate-500 mt-1 text-sm">Manage your listings and property portfolio.</p>
         </div>
-        <button className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+        <button onClick={() => console.log('Add Property button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
           <FiPlus size={18} /> Add Property
         </button>
       </div>
@@ -133,7 +134,7 @@ export default function Properties() {
             <option>Condo</option>
             <option>Townhouse</option>
           </select>
-          <button className="flex items-center gap-2 border border-slate-200 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 bg-white">
+          <button onClick={() => console.log('Filter button clicked')} className="flex items-center gap-2 border border-slate-200 px-4 py-2.5 rounded-lg text-sm font-medium hover:bg-slate-50 bg-white">
             <FiFilter size={16} /> Filter
           </button>
         </div>
@@ -146,7 +147,7 @@ export default function Properties() {
             {/* Image */}
             <div className="relative h-56">
               <img src={property.image} alt={property.address} className="w-full h-full object-cover" />
-              <div className="absolute top-3 right-3 bg-white/90 p-1.5 rounded-full hover:bg-white cursor-pointer shadow-sm">
+              <div onClick={() => console.log(`More options for property ${property.id} clicked`)} className="absolute top-3 right-3 bg-white/90 p-1.5 rounded-full hover:bg-white cursor-pointer shadow-sm">
                 <FiMoreVertical size={16} className="text-slate-700" />
               </div>
               <div className={`absolute bottom-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase text-white
@@ -182,8 +183,8 @@ export default function Properties() {
               </div>
 
               <div className="mt-4 flex gap-2">
-                <button className="flex-1 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 transition">View Details</button>
-                <button className="flex-1 py-2 bg-[#0f3b9e] hover:bg-blue-800 text-white rounded-lg text-xs font-medium transition">Schedule Showing</button>
+                <button onClick={() => console.log(`View Details for property ${property.id} clicked`)} className="flex-1 py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 transition">View Details</button>
+                <button onClick={() => console.log(`Schedule Showing for property ${property.id} clicked`)} className="flex-1 py-2 bg-[#0f3b9e] hover:bg-blue-800 text-white rounded-lg text-xs font-medium transition">Schedule Showing</button>
               </div>
             </div>
           </div>

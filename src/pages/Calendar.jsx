@@ -83,7 +83,7 @@ export default function CalendarPage() {
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Calendar</h2>
           <p className="text-slate-500 mt-1 text-sm">Schedule appointments, showings, and meetings.</p>
         </div>
-        <button className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+        <button onClick={() => console.log('Add Event button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
           <FiPlus size={18} /> Add Event
         </button>
       </div>
@@ -105,15 +105,15 @@ export default function CalendarPage() {
           {/* Calendar Header */}
           <div className="flex justify-between items-center mb-6 pb-4 border-b border-slate-100">
             <div className="flex items-center gap-4">
-              <button className="p-1.5 bg-slate-100 rounded hover:bg-slate-200 text-slate-600 transition">
+              <button onClick={() => console.log('Previous month/week button clicked')} className="p-1.5 bg-slate-100 rounded hover:bg-slate-200 text-slate-600 transition">
                 <FiChevronLeft size={20} />
               </button>
               <h3 className="text-lg font-bold text-slate-800">May 11 - 17, 2026</h3>
-              <button className="p-1.5 bg-slate-100 rounded hover:bg-slate-200 text-slate-600 transition">
+              <button onClick={() => console.log('Next month/week button clicked')} className="p-1.5 bg-slate-100 rounded hover:bg-slate-200 text-slate-600 transition">
                 <FiChevronRight size={20} />
               </button>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2" role="group"> {/* Added role for accessibility */}
               <button className="px-4 py-1.5 border border-slate-200 rounded-lg text-sm font-medium hover:bg-slate-50 transition">Day</button>
               <button className="px-4 py-1.5 bg-[#0f3b9e] text-white rounded-lg text-sm font-medium shadow-sm">Week</button>
               <button className="px-4 py-1.5 border border-slate-200 rounded-lg text-sm font-medium hover:bg-slate-50 transition">Month</button>
@@ -151,7 +151,7 @@ export default function CalendarPage() {
           {/* Upcoming Events Widget */}
           <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200 h-full">
             <div className="flex justify-between items-center mb-5">
-              <h4 className="text-sm font-bold text-slate-800">Upcoming Events</h4>
+              <h4 onClick={() => console.log('Upcoming Events header clicked')} className="text-sm font-bold text-slate-800 cursor-pointer">Upcoming Events</h4>
               <button className="flex items-center gap-1 text-xs text-blue-600 font-medium hover:underline">
                 <FiFilter size={14} /> Filter
               </button>
@@ -175,7 +175,7 @@ export default function CalendarPage() {
                     <div className="flex justify-between items-start">
                       <h5 className="text-sm font-bold text-slate-800 leading-tight">{event.title}</h5>
                       <button className="text-slate-300 hover:text-slate-600"><FiMoreVertical size={16} /></button>
-                    </div>
+                    </div> {/* This button needs an onClick */}
                     
                     <div className="flex items-center gap-4 mt-1.5 text-xs text-slate-500">
                       <span className="flex items-center gap-1.5"><FiCalendar size={12} /> {event.date}</span>
@@ -201,7 +201,7 @@ export default function CalendarPage() {
 
             {/* View All Button */}
             <div className="mt-6 pt-4 border-t border-slate-100">
-              <button className="w-full py-2 text-sm text-blue-600 font-medium hover:bg-slate-50 rounded-lg transition">
+              <button onClick={() => console.log('View All Events button clicked')} className="w-full py-2 text-sm text-blue-600 font-medium hover:bg-slate-50 rounded-lg transition">
                 View All Events
               </button>
             </div>

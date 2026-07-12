@@ -33,10 +33,10 @@ export default function Reports() {
           <p className="text-slate-500 mt-1 text-sm">Track your sales performance and business insights.</p>
         </div>
         <div className="flex gap-3">
-          <button className="border border-slate-200 text-slate-700 px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm hover:bg-slate-50 transition">
+          <button onClick={() => console.log('May 2026 button clicked')} className="border border-slate-200 text-slate-700 px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm hover:bg-slate-50 transition">
             <FiCalendar size={18} /> May 2026
           </button>
-          <button className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+          <button onClick={() => console.log('Export button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
             <FiDownload size={18} /> Export
           </button>
         </div>
@@ -60,7 +60,7 @@ export default function Reports() {
               <h4 className="text-sm font-bold text-slate-800">Revenue Overview</h4>
               <p className="text-xs text-slate-500 mt-0.5">Monthly revenue for the last 6 months</p>
             </div>
-            <button className="flex items-center gap-2 border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-slate-50">
+            <button onClick={() => console.log('Revenue Overview Filter button clicked')} className="flex items-center gap-2 border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-slate-50">
               <FiFilter size={14} /> Filter
             </button>
           </div>
@@ -140,7 +140,7 @@ export default function Reports() {
           {/* Quick Stats Widget */}
           <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
             <div className="flex justify-between items-center mb-4">
-              <h4 className="text-sm font-bold text-slate-800">Quick Stats</h4>
+              <h4 onClick={() => console.log('Quick Stats header clicked')} className="text-sm font-bold text-slate-800 cursor-pointer">Quick Stats</h4>
               <button className="text-blue-600 text-xs font-medium hover:underline">View All</button>
             </div>
             <div className="space-y-3">
@@ -170,7 +170,7 @@ export default function Reports() {
       <div className="space-y-3 shrink-0">
         <div className="flex justify-between items-center">
           <h4 className="text-sm font-bold text-slate-700">Recent Sales & Deals</h4>
-          <button className="text-xs text-blue-600 font-medium hover:underline">View All Deals →</button>
+          <button onClick={() => console.log('View All Deals button clicked')} className="text-xs text-blue-600 font-medium hover:underline">View All Deals →</button>
         </div>
         <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
           <table className="w-full text-left text-sm text-slate-500">
@@ -201,7 +201,7 @@ export default function Reports() {
                     </span>
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <button className="text-slate-400 hover:text-slate-700 p-1 rounded hover:bg-slate-100 transition">
+                    <button onClick={() => console.log(`More options for sale ${sale.id} clicked`)} className="text-slate-400 hover:text-slate-700 p-1 rounded hover:bg-slate-100 transition">
                       <FiMoreVertical size={16} />
                     </button>
                   </td>

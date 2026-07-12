@@ -81,7 +81,7 @@ export default function Marketing() {
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Marketing & Campaigns</h2>
           <p className="text-slate-500 mt-1 text-sm">Manage your email campaigns and lead generation efforts.</p>
         </div>
-        <button className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+        <button onClick={() => console.log('Create Campaign button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
           <FiPlus size={18} /> Create Campaign
         </button>
       </div>
@@ -104,7 +104,7 @@ export default function Marketing() {
               <h4 className="text-sm font-bold text-slate-800">Active Email Campaigns</h4>
               <p className="text-xs text-slate-500 mt-0.5">Recent and scheduled marketing campaigns</p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex gap-3" role="group"> {/* Added role for accessibility */}
               <button className="flex items-center gap-2 border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium hover:bg-slate-50">
                 <FiFilter size={14} /> Filter
               </button>
@@ -132,7 +132,7 @@ export default function Marketing() {
                         campaign.status === 'Scheduled' ? 'bg-orange-100 text-orange-700 border border-orange-200' : 
                         'bg-slate-100 text-slate-700 border border-slate-200'}`}>
                       {campaign.status}
-                    </span>
+                    </span> {/* This button needs an onClick */}
                     <button className="text-slate-400 hover:text-slate-700 p-1 rounded hover:bg-slate-100 transition">
                       <FiMoreVertical size={16} />
                     </button>
@@ -164,7 +164,7 @@ export default function Marketing() {
                 {/* Bottom Row */}
                 <div className="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs text-slate-400">
                   <span className="flex items-center gap-1.5"><FiCalendar size={12} /> {campaign.date}</span>
-                  <button className="text-blue-600 font-medium hover:underline">View Details</button>
+                  <button onClick={() => console.log(`View Details for campaign ${campaign.id} clicked`)} className="text-blue-600 font-medium hover:underline">View Details</button>
                 </div>
               </div>
             ))}
@@ -172,7 +172,7 @@ export default function Marketing() {
 
           {/* View All Button */}
           <div className="mt-6 pt-4 border-t border-slate-100">
-            <button className="w-full py-2 text-sm text-blue-600 font-medium hover:bg-slate-50 rounded-lg transition">
+            <button onClick={() => console.log('View All Campaigns button clicked')} className="w-full py-2 text-sm text-blue-600 font-medium hover:bg-slate-50 rounded-lg transition">
               View All Campaigns
             </button>
           </div>
@@ -184,7 +184,7 @@ export default function Marketing() {
           {/* Lead Sources Widget */}
           <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
             <div className="flex justify-between items-center mb-4">
-              <h4 className="text-sm font-bold text-slate-800">Lead Sources</h4>
+              <h4 onClick={() => console.log('Lead Sources header clicked')} className="text-sm font-bold text-slate-800 cursor-pointer">Lead Sources</h4>
               <button className="text-blue-600 text-xs font-medium hover:underline">View All</button>
             </div>
             <div className="space-y-3">
@@ -212,7 +212,7 @@ export default function Marketing() {
           {/* Performance Overview Widget (Mini Chart) */}
           <div className="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
             <div className="flex justify-between items-center mb-4">
-              <h4 className="text-sm font-bold text-slate-800">Performance Overview</h4>
+              <h4 onClick={() => console.log('Performance Overview header clicked')} className="text-sm font-bold text-slate-800 cursor-pointer">Performance Overview</h4>
               <button className="text-blue-600 text-xs font-medium hover:underline">Full Report</button>
             </div>
             <div className="space-y-4">

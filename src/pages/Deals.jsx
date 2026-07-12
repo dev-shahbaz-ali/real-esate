@@ -18,7 +18,7 @@ export default function Deals() {
           <h2 className="text-2xl font-bold text-slate-900">Deals Pipeline</h2>
           <p className="text-slate-500 mt-1 text-sm">Manage and track all your real estate deals.</p>
         </div>
-        <button className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+        <button onClick={() => console.log('New Deal button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
           <FiPlus size={18} /> New Deal
         </button>
       </div>
@@ -45,7 +45,7 @@ export default function Deals() {
           <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
           <input type="text" placeholder="Search deals..." className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-blue-500" />
         </div>
-        <button className="flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-50">
+        <button onClick={() => console.log('Filter deals button clicked')} className="flex items-center gap-2 border border-slate-200 px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-50">
           <FiFilter /> Filter
         </button>
       </div>
@@ -84,7 +84,7 @@ export default function Deals() {
                 <td className="px-6 py-4 flex items-center gap-2">
                   <img src="https://i.pravatar.cc/100?img=33" className="w-6 h-6 rounded-full" /> {deal.agent}
                 </td>
-                <td className="px-6 py-4 text-right">
+                <td className="px-6 py-4 text-right"> {/* This button needs an onClick */}
                   <button className="text-slate-400 hover:text-slate-700"><FiMoreVertical /></button>
                 </td>
               </tr>
