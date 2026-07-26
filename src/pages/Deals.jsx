@@ -1,8 +1,10 @@
 // src/pages/Deals.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { FiFilter, FiPlus, FiSearch, FiMoreVertical, FiDollarSign, FiHome } from 'react-icons/fi';
+import ActionModal from '../components/ActionModal';
 
 export default function Deals() {
+  const [showForm, setShowForm] = useState(false);
   const deals = [
     { id: 1, address: "125 Maple Street", location: "Denver, CO", price: "$425,000", status: "New", agent: "Sarah Johnson" },
     { id: 2, address: "4301 Beverly Hills Dr", location: "Los Angeles, CA", price: "$750,000", status: "Qualified", agent: "Emily Davis" },
@@ -18,7 +20,7 @@ export default function Deals() {
           <h2 className="text-2xl font-bold text-slate-900">Deals Pipeline</h2>
           <p className="text-slate-500 mt-1 text-sm">Manage and track all your real estate deals.</p>
         </div>
-        <button onClick={() => console.log('New Deal button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+        <button onClick={() => setShowForm(true)} className="bg-[#3568d4] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-700 transition">
           <FiPlus size={18} /> New Deal
         </button>
       </div>
@@ -92,6 +94,7 @@ export default function Deals() {
           </tbody>
         </table>
       </div>
+      <ActionModal open={showForm} onClose={() => setShowForm(false)} onSubmit={() => setShowForm(false)} title="Create new deal" description="Add an opportunity to your sales pipeline." fields={[{ label: 'Property address', placeholder: '125 Maple Street', full: true }, { label: 'Deal value', placeholder: '$425,000' }, { label: 'Client name', placeholder: 'Sarah Johnson' }, { label: 'Deal stage', type: 'select', options: ['New', 'Qualified', 'Negotiation', 'Closed'] }]} />
     </div>
   );
 }

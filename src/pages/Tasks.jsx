@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FiPlus,
   FiSearch,
@@ -12,8 +12,10 @@ import {
   FiFlag,
   FiCheckSquare
 } from "react-icons/fi";
+import ActionModal from '../components/ActionModal';
 
 export default function Tasks() {
+  const [showForm, setShowForm] = useState(false);
   
   // Dummy Data for Tasks
   const tasksData = [
@@ -96,7 +98,7 @@ export default function Tasks() {
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Tasks</h2>
           <p className="text-slate-500 mt-1 text-sm">View and manage all team tasks and to-dos.</p>
         </div>
-        <button onClick={() => console.log('Add New Task button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+        <button onClick={() => setShowForm(true)} className="bg-[#3568d4] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-700 transition">
           <FiPlus size={18} /> Add New Task
         </button>
       </div>
@@ -210,6 +212,7 @@ export default function Tasks() {
         </div>
       </div>
 
+      <ActionModal open={showForm} onClose={() => setShowForm(false)} onSubmit={() => setShowForm(false)} title="Add task" description="Create a task for yourself or a team member." fields={[{ label: 'Task title', placeholder: 'Follow up with new lead', full: true }, { label: 'Assignee', placeholder: 'Michael Carter' }, { label: 'Due date', type: 'date' }, { label: 'Priority', type: 'select', options: ['High', 'Medium', 'Low'] }]} />
     </div>
   );
 }

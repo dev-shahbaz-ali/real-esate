@@ -50,9 +50,11 @@ coverage
 *.tgz
 
 # dotenv environment variables file
-.env
-.env.local
 .env.*.local
 
 # Misc
 .DS_Store
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+config.bat

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FiPlus,
   FiSearch,
@@ -10,8 +10,10 @@ import {
   FiCalendar,
   FiMapPin
 } from "react-icons/fi";
+import ActionModal from '../components/ActionModal';
 
 export default function Properties() {
+  const [showForm, setShowForm] = useState(false);
   
   // Dummy Data for Properties
   const propertiesData = [
@@ -98,7 +100,7 @@ export default function Properties() {
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Properties</h2>
           <p className="text-slate-500 mt-1 text-sm">Manage your listings and property portfolio.</p>
         </div>
-        <button onClick={() => console.log('Add Property button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+        <button onClick={() => setShowForm(true)} className="bg-[#3568d4] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-700 transition">
           <FiPlus size={18} /> Add Property
         </button>
       </div>
@@ -191,6 +193,7 @@ export default function Properties() {
         ))}
       </div>
 
+      <ActionModal open={showForm} onClose={() => setShowForm(false)} onSubmit={() => setShowForm(false)} title="Add property" description="Create a new listing for your portfolio." fields={[{ label: 'Property title', placeholder: 'Modern waterfront villa' }, { label: 'Price', placeholder: '$425,000' }, { label: 'Address', placeholder: '125 Maple Street', full: true }, { label: 'Property status', type: 'select', options: ['Active', 'Pending', 'Sold'] }]} />
     </div>
   );
 }

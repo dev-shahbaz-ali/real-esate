@@ -1,5 +1,5 @@
 // src/components/Sidebar.jsx
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   FiHome, FiUsers, FiTarget, FiCheckSquare, FiCalendar,
@@ -7,8 +7,7 @@ import {
   FiHelpCircle, FiPieChart, FiBox, FiChevronLeft, FiChevronRight
 } from "react-icons/fi";
 
-export default function Sidebar({ isOpen, onClose }) {
-  const [collapsed, setCollapsed] = useState(false);
+export default function Sidebar({ isOpen, collapsed, onCollapsedChange, onClose }) {
   return (
     <>
       {isOpen && <button aria-label="Close navigation" onClick={onClose} className="sidebar-backdrop" />}
@@ -39,7 +38,7 @@ export default function Sidebar({ isOpen, onClose }) {
       <div className="px-3 py-4 border-t border-slate-800/50 space-y-0.5 shrink-0">
         <SidebarItem as={NavLink} onClick={onClose} to="/settings" icon={<FiSettings size={18} />} text="Settings" />
         <SidebarItem as={NavLink} onClick={onClose} to="/help" icon={<FiHelpCircle size={18} />} text="Help & Support" />
-        <button type="button" title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'} onClick={() => setCollapsed((value) => !value)} className="sidebar-collapse-button mt-2 flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-slate-400 hover:bg-blue-50 hover:text-blue-700">
+        <button type="button" title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'} onClick={() => onCollapsedChange((value) => !value)} className="sidebar-collapse-button mt-2 flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-slate-400 hover:bg-blue-50 hover:text-blue-700">
           {collapsed ? <FiChevronRight size={18} /> : <FiChevronLeft size={18} />}<span className="nav-label text-[13px] font-medium">{collapsed ? 'Expand menu' : 'Collapse menu'}</span>
         </button>
       </div>
