@@ -1,8 +1,10 @@
 // src/pages/Clients.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { FiPlus, FiSearch, FiUser, FiMail, FiPhone, FiMoreVertical } from 'react-icons/fi';
+import ActionModal from '../components/ActionModal';
 
 export default function Clients() {
+  const [showForm, setShowForm] = useState(false);
   const clients = [
     { id: 1, name: "Sarah Johnson", email: "sarah.j@email.com", phone: "+1 (303) 555-0101", type: "Buyer", deals: 2 },
     { id: 2, name: "Robert Brown", email: "robert.b@email.com", phone: "+1 (212) 555-0199", type: "Seller", deals: 3 },
@@ -19,7 +21,7 @@ export default function Clients() {
           <h2 className="text-2xl font-bold text-slate-900">Clients</h2>
           <p className="text-slate-500 mt-1 text-sm">Manage your client relationships and history.</p>
         </div>
-        <button onClick={() => console.log('Add Client button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+        <button onClick={() => setShowForm(true)} className="bg-[#3568d4] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-700 transition">
           <FiPlus size={18} /> Add Client
         </button>
       </div>
@@ -96,6 +98,7 @@ export default function Clients() {
           </tbody>
         </table>
       </div>
+      <ActionModal open={showForm} onClose={() => setShowForm(false)} onSubmit={() => setShowForm(false)} title="Add client" description="Save a new buyer, seller, or investor." fields={[{ label: 'Full name', placeholder: 'Sarah Johnson' }, { label: 'Email address', type: 'email', placeholder: 'sarah@email.com' }, { label: 'Phone number', placeholder: '+1 (303) 555-0101' }, { label: 'Client type', type: 'select', options: ['Buyer', 'Seller', 'Investor'] }]} />
     </div>
   );
 }

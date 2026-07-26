@@ -1,8 +1,10 @@
 // src/pages/Leads.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { FiPlus, FiSearch, FiTarget, FiMoreVertical } from 'react-icons/fi';
+import ActionModal from '../components/ActionModal';
 
 export default function Leads() {
+  const [showForm, setShowForm] = useState(false);
   const leads = [
     { id: 1, name: "Alice Walker", location: "Seattle, WA", source: "Zillow", status: "New", interest: "$850k - $1M" },
     { id: 2, name: "Mark Spencer", location: "Miami, FL", source: "Referral", status: "Contacted", interest: "$1.2M - $1.5M" },
@@ -18,7 +20,7 @@ export default function Leads() {
           <h2 className="text-2xl font-bold text-slate-900">Leads</h2>
           <p className="text-slate-500 mt-1 text-sm">Track and convert incoming leads.</p>
         </div>
-        <button onClick={() => console.log('Add Lead button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+        <button onClick={() => setShowForm(true)} className="bg-[#3568d4] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-700 transition">
           <FiPlus size={18} /> Add Lead
         </button>
       </div>
@@ -83,6 +85,7 @@ export default function Leads() {
           </tbody>
         </table>
       </div>
+      <ActionModal open={showForm} onClose={() => setShowForm(false)} onSubmit={() => setShowForm(false)} title="Add lead" description="Capture a new prospect and their buying intent." fields={[{ label: 'Lead name', placeholder: 'Alice Walker' }, { label: 'Email address', type: 'email', placeholder: 'alice@email.com' }, { label: 'Location', placeholder: 'Seattle, WA' }, { label: 'Budget', placeholder: '$850k - $1M' }]} />
     </div>
   );
 }

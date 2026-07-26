@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FiPlus,
   FiSearch,
@@ -15,8 +15,10 @@ import {
   FiCalendar,
   FiUser
 } from "react-icons/fi";
+import ActionModal from '../components/ActionModal';
 
 export default function Documents() {
+  const [showForm, setShowForm] = useState(false);
   
   // Dummy Data for Folders
   const foldersData = [
@@ -88,7 +90,7 @@ export default function Documents() {
           <button onClick={() => console.log('New Folder button clicked')} className="border border-slate-200 text-slate-700 px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm hover:bg-slate-50 transition">
             <FiPlus size={18} /> New Folder
           </button>
-          <button onClick={() => console.log('Upload File button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+          <button onClick={() => setShowForm(true)} className="bg-[#3568d4] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-700 transition">
             <FiPlus size={18} /> Upload File
           </button>
         </div>
@@ -222,6 +224,7 @@ export default function Documents() {
         </div>
       </div>
 
+      <ActionModal open={showForm} onClose={() => setShowForm(false)} onSubmit={() => setShowForm(false)} title="Upload document" description="Add a contract, disclosure, or property file." fields={[{ label: 'File name', placeholder: 'Purchase agreement', full: true }, { label: 'Property', placeholder: '125 Maple Street' }, { label: 'File type', type: 'select', options: ['PDF', 'DOCX', 'JPG', 'PNG'] }]} />
     </div>
   );
 }
