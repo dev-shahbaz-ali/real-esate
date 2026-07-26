@@ -4,15 +4,15 @@ import {
   FiBell, FiSearch, FiMenu, FiMessageCircle, FiChevronDown
 } from "react-icons/fi";
 
-export default function Topbar() {
+export default function Topbar({ onMenuClick, searchQuery, onSearchChange }) {
   return (
-    <header className="bg-white px-8 py-4 border-b border-slate-200 flex justify-between items-center shrink-0 sticky top-0 z-10">
+    <header className="topbar bg-white px-8 py-4 border-b border-slate-200 flex justify-between items-center shrink-0 sticky top-0 z-10">
       <div className="flex items-center gap-4">
-        <button className="text-slate-500 hover:bg-slate-50 p-2 rounded-lg"><FiMenu size={20} /></button>
+        <button onClick={onMenuClick} aria-label="Open navigation" className="menu-button text-slate-500 hover:bg-slate-50 p-2 rounded-lg"><FiMenu size={20} /></button>
         <div className="relative w-[500px]">
           <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
           <input
-            type="text"
+            type="text" value={searchQuery} onChange={(event) => onSearchChange(event.target.value)}
             placeholder="Search properties, clients, or deals..."
             className="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder:text-slate-400"
           />

@@ -1,5 +1,5 @@
 // src/App.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Sidebar from './components/Sidebar';
@@ -23,16 +23,19 @@ import Calendar from './pages/Calendar';
 import './App.css'; // Import your CSS file for styling
 
 export default function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
   return (
     <Router>
-      <div className="flex h-screen bg-[#f8fafc] font-sans overflow-hidden text-slate-800">
+      <div className="app-shell flex h-screen bg-[#f8fafc] font-sans overflow-hidden text-slate-800">
         {/* Fixed Sidebar */}
-        <Sidebar />
+        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
         {/* Main Content Area */}
         <div className="flex-1 h-full overflow-y-auto bg-[#f8fafc]">
           {/* Sticky Topbar */}
-          <Topbar />
+          <Topbar onMenuClick={() => setSidebarOpen(true)} searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
           {/* Routes (Pages change yahan honge) */}
           <Routes>
