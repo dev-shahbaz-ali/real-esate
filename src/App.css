@@ -31,7 +31,7 @@ button { cursor: pointer; }
 .app-sidebar a[aria-current="page"] .nav-icon { color: #3568d4; }
 .sidebar-collapse-button { position: relative; }
 .app-sidebar nav { scrollbar-width: thin; }
-.menu-button { display: none; }
+.menu-button { display: inline-flex; }
 .sidebar-backdrop { display: none; }
 .brand-mark { display: none; }
 

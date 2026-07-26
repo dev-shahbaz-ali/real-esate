@@ -24,18 +24,19 @@ import './App.css'; // Import your CSS file for styling
 
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
     <Router>
       <div className="app-shell flex h-screen bg-[#f8fafc] font-sans overflow-hidden text-slate-800">
         {/* Fixed Sidebar */}
-        <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <Sidebar isOpen={sidebarOpen} collapsed={sidebarCollapsed} onCollapsedChange={setSidebarCollapsed} onClose={() => setSidebarOpen(false)} />
 
         {/* Main Content Area */}
         <div className="flex-1 h-full overflow-y-auto bg-[#f8fafc]">
           {/* Sticky Topbar */}
-          <Topbar onMenuClick={() => setSidebarOpen(true)} searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+          <Topbar onMenuClick={() => { if (window.innerWidth <= 900) setSidebarOpen(true); else setSidebarCollapsed((value) => !value); }} searchQuery={searchQuery} onSearchChange={setSearchQuery} />
 
           {/* Routes (Pages change yahan honge) */}
           <Routes>

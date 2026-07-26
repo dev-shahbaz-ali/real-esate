@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FiPlus,
   FiChevronLeft,
@@ -11,8 +11,10 @@ import {
   FiMoreVertical,
   FiFilter
 } from "react-icons/fi";
+import ActionModal from '../components/ActionModal';
 
 export default function CalendarPage() {
+  const [showForm, setShowForm] = useState(false);
   
   // Dummy Data for Upcoming Events
   const upcomingEvents = [
@@ -83,7 +85,7 @@ export default function CalendarPage() {
           <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Calendar</h2>
           <p className="text-slate-500 mt-1 text-sm">Schedule appointments, showings, and meetings.</p>
         </div>
-        <button onClick={() => console.log('Add Event button clicked')} className="bg-[#0f3b9e] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-800 transition">
+        <button onClick={() => setShowForm(true)} className="bg-[#3568d4] text-white px-5 py-2.5 rounded-lg flex items-center gap-2 font-medium text-sm shadow-sm hover:bg-blue-700 transition">
           <FiPlus size={18} /> Add Event
         </button>
       </div>
@@ -210,6 +212,7 @@ export default function CalendarPage() {
         </div>
       </div>
 
+      <ActionModal open={showForm} onClose={() => setShowForm(false)} onSubmit={() => setShowForm(false)} title="Add calendar event" description="Schedule a showing, meeting, or follow-up." fields={[{ label: 'Event title', placeholder: 'Property showing - 125 Maple Street', full: true }, { label: 'Date', type: 'date' }, { label: 'Time', type: 'time' }, { label: 'Event type', type: 'select', options: ['Showing', 'Meeting', 'Open House', 'Call'] }]} />
     </div>
   );
 }
